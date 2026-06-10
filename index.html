@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aplicação Web Almoxarifado</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Controle de Almoxarifado</h1>
+      </header>
+      <div class="container">
+        <label for="input-nome">Nome do Material</label>
+        <input
+          type="text"
+          name=""
+          id="input-nome"
+          placeholder="Informe o nome do material"
+        />
+        <br />
+        <label for="input-quantidade">Quantidade</label>
+        <input
+          type="number"
+          name=""
+          id="input-quantidade"
+          placeholder="Informe a quantidade"
+        />
+        <br />
+        <button
+          class="btn"
+          type="button"
+          id="btn-cadastrar"
+          onclick="salvarMaterial()"
+        >
+          Salvar
+        </button>
+      </div>
+
+      <div class="container">
+        <table id="lista-materiais">
+          <tr>
+            <th>Material</th>
+            <th>Quantidade</th>
+            <th>Açôes</th>
+          </tr>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>
