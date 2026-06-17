@@ -11,6 +11,7 @@ async function listarMateriais() {
         <tr>
             <th>Material</th>
             <th>Quantidade</th>
+            <th>Ações</th>
         </tr>
     `;
 
@@ -19,6 +20,10 @@ async function listarMateriais() {
             <tr>
                 <td>${material.nome}</td>
                 <td>${material.quantidade}</td>
+                <td>
+                    <button class="btn-baixar" onclick="baixarMaterial(${material.id})">Baixar</button>
+                    <button class="btn-excluir" onclick="excluirMaterial(${material.id})">Excluir</button>
+                </td>
             </tr>
         `;
     });
