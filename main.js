@@ -60,3 +60,42 @@ function validarRetirada(estoqueAtual,  quantidadeRetirada) {
     }
     return true;
 }
+
+async function baixarEstoque(id, quantidadeAtual) {
+    const inputRetirada = document.getElementById("input-retirada");
+    const quantidadeRetirada = inputRetirada.value;
+
+    if (!validarRetirada(quantidadeAtual, quantidadeRetirada)) {
+        window.alert("Quantidade de retirada inválida!");
+        return;
+    }
+
+    const novaQuantidade = Number(quantidadeAtual) - Number(quantidadeRetirada);
+
+
+    await fetch(`${API}/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ quantidade: novaQuantidade })
+    });
+
+    inputRetirada.value = "";
+    listarMateriais();
+}
+
+async function baixarMaterial(id) {
+    const resposta = await fetch(`${API}/${id}`);
+    const material = await resposta.json();
+    const quantidadeAtual = material.quantidade;
+
+    await baixarEstoque(id, quantidadeAtual);
+}
+
+async function excluirMaterial(id) {
+    if (confirm("Deseja realmente excluir este material?")) {
+        await fetch(`${API}/${id}`, {
+            method: "DELETE"
+        });
+        listarMateriais();
+    }
+}
