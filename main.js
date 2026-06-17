@@ -91,11 +91,3 @@ async function baixarMaterial(id) {
     await baixarEstoque(id, quantidadeAtual);
 }
 
-async function excluirMaterial(id) {
-    if (confirm("Deseja realmente excluir este material?")) {
-        await fetch(`${API}/${id}`, {
-            method: "DELETE"
-        });
-        listarMateriais();
-    }
-}
