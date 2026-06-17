@@ -49,3 +49,14 @@ async function salvarMaterial() {
 
     listarMateriais();
 }
+
+function validarRetirada(estoqueAtual,  quantidadeRetirada) {
+    const atual = Number(estoqueAtual);
+    const retirada = Number(quantidadeRetirada);
+
+    if (retirada > atual) {
+        window.alert("Quantidade de retirada excede o estoque atual!");
+        return false;
+    }
+    return true;
+}
