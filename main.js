@@ -32,7 +32,12 @@ async function listarMateriais() {
             `;
         });
         
-       
+       document.getElementById("total-itens").textContent = materiais.length;
+    } catch (erro) {
+        console.error("Erro ao listar materiais:", erro);
+        alert("Erro ao carregar materiais!");
+    }
+
 }
 
 async function salvarMaterial() {
