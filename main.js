@@ -162,3 +162,34 @@ function pesquisarMaterial() {
         alert("Erro ao pesquisar material!");
     }
 }
+
+function pesquisarMaterial() {
+    try {
+        const termo = document.getElementById("input-busca").value.toLowerCase();
+        const tabela = document.getElementById("lista-materiais");
+        const linhas = tabela.querySelectorAll("tr");
+        let contadorVisivel = 0;
+        let totalCriticos = 0;
+
+        linhas.forEach((linha, indice) => {
+            
+            if (indice === 0) return;
+            
+            const nomeMaterial = linha.cells[0].textContent.toLowerCase();
+            if (nomeMaterial.includes(termo)) {
+                linha.style.display = "";
+                contadorVisivel++;
+                if (linha.classList.contains("estoque-critico")) {
+                    totalCriticos++;
+                }
+            } else {
+                linha.style.display = "none";
+            }
+        });
+
+        document.getElementById("total-itens").textContent = contadorVisivel;
+    } catch (erro) {
+        console.error("Erro ao pesquisar material:", erro);
+        alert("Erro ao pesquisar material!");
+    }
+}
